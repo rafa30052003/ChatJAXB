@@ -1,11 +1,20 @@
 package model.dto;
 
+import javax.xml.bind.annotation.*;
 import java.util.Date;
 
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Message {
-        private User user;
-        private String sender;
-        private Date timestamp;
+    @XmlElement
+    private User user;
+
+    @XmlElement
+    private String sender;
+
+    @XmlElement
+    @XmlSchemaType(name = "dateTime")
+    private Date timestamp;
 
     public Message() {
     }
