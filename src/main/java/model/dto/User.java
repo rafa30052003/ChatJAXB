@@ -1,41 +1,54 @@
 package model.dto;
 
+import java.util.Date;
+import java.util.Objects;
+
 public class User {
 
-    private String name;
-    private Date fecha;
+    private String nickname;
+    private Date entryTime;
 
     public User() {
     }
 
-
-    public User(String name, Date fecha) {
-        Name = name;
-        Fecha = fecha;
+    public User(String nickname, Date entryTime) {
+        this.nickname = nickname;
+        this.entryTime = entryTime;
     }
 
-    public String getName() {
-        return Name;
+    public String getNickname() {
+        return nickname;
     }
 
-    public void setName(String name) {
-        Name = name;
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 
-    public Date getFecha() {
-        return Fecha;
+    public Date getEntryTime() {
+        return entryTime;
     }
 
-    public void setFecha(Date fecha) {
-        Fecha = fecha;
+    public void setEntryTime(Date entryTime) {
+        this.entryTime = entryTime;
     }
 
-    @java.lang.Override
-    public java.lang.String toString() {
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User user)) return false;
+        return Objects.equals(nickname, user.nickname);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nickname);
+    }
+
+    @Override
+    public String toString() {
         return "User{" +
-                "Name='" + Name + '\'' +
-                ", Fecha=" + Fecha +
+                "nickname='" + nickname + '\'' +
+                ", entryTime=" + entryTime +
                 '}';
     }
-
 }

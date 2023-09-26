@@ -1,35 +1,38 @@
 package model.dto;
 
-public class Chat {
-    private List User;
+import java.util.List;
 
-    private List Message;
+public class Chat {
+    private List<User> User;
+
+    private List<Message> Message;
 
     public Chat() {
     }
 
-    public Chat(List user, List message) {
+    public Chat(List<model.dto.User> user, List<model.dto.Message> message) {
         User = user;
         Message = message;
     }
-    public List getUser() {
+
+    public List<model.dto.User> getUser() {
         return User;
     }
 
-    public void setUser(List user) {
+    public void setUser(List<model.dto.User> user) {
         User = user;
     }
 
-    public List getMessage() {
+    public List<model.dto.Message> getMessage() {
         return Message;
     }
 
-    public void setMessage(List message) {
+    public void setMessage(List<model.dto.Message> message) {
         Message = message;
     }
 
-    @java.lang.Override
-    public java.lang.String toString() {
+    @Override
+    public String toString() {
         return "Chat{" +
                 "User=" + User +
                 ", Message=" + Message +
