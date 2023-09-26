@@ -1,50 +1,51 @@
 package model.dto;
 
+import java.util.Date;
+
 public class Message {
-        private User usuario;
-        private String contenido;
-        private Date fecha;
+        private User user;
+        private String sender;
+        private Date timestamp;
 
     public Message() {
     }
 
-    public Message(String message, String contenido, Date fecha) {
-        Message = message;
-        Contenido = contenido;
-        Fecha = fecha;
+    public Message(User user, String sender, Date timestamp) {
+        this.user = user;
+        this.sender = sender;
+        this.timestamp = timestamp;
     }
 
-    public String getMessage() {
-        return Message;
+    public User getUser() {
+        return user;
     }
 
-    public void setMessage(String message) {
-        Message = message;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public String getContenido() {
-        return Contenido;
+    public String getSender() {
+        return sender;
     }
 
-    public void setContenido(String contenido) {
-        Contenido = contenido;
+    public void setSender(String sender) {
+        this.sender = sender;
     }
 
-    public Date getFecha() {
-        return Fecha;
+    public Date getTimestamp() {
+        return timestamp;
     }
 
-    public void setFecha(Date fecha) {
-        Fecha = fecha;
+    public void setTimestamp(Date timestamp) {
+        this.timestamp = timestamp;
     }
 
-    @java.lang.Override
-    public java.lang.String toString() {
+    @Override
+    public String toString() {
         return "Message{" +
-                "usuario=" + usuario +
-                ", contenido='" + contenido + '\'' +
-                ", fecha=" + fecha +
+                "user=" + user +
+                ", sender='" + sender + '\'' +
+                ", timestamp=" + timestamp +
                 '}';
     }
-
 }
