@@ -2,40 +2,49 @@ package model.dto;
 
 import java.util.List;
 
-public class Chat {
-    private List<User> User;
+import javax.xml.bind.annotation.*;
+import java.util.List;
 
-    private List<Message> Message;
+@XmlRootElement(name = "chat")
+@XmlAccessorType(XmlAccessType.FIELD)
+public class Chat {
+    @XmlElementWrapper(name = "users")
+    @XmlElement(name = "user")
+    private List<User> users;
+
+    @XmlElementWrapper(name = "messages")
+    @XmlElement(name = "message")
+    private List<Message> messages;
 
     public Chat() {
     }
 
-    public Chat(List<model.dto.User> user, List<model.dto.Message> message) {
-        User = user;
-        Message = message;
+    public Chat(List<User> users, List<Message> messages) {
+        this.users = users;
+        this.messages = messages;
     }
 
-    public List<model.dto.User> getUser() {
-        return User;
+    public List<User> getUsers() {
+        return users;
     }
 
-    public void setUser(List<model.dto.User> user) {
-        User = user;
+    public void setUsers(List<User> users) {
+        this.users = users;
     }
 
-    public List<model.dto.Message> getMessage() {
-        return Message;
+    public List<Message> getMessages() {
+        return messages;
     }
 
-    public void setMessage(List<model.dto.Message> message) {
-        Message = message;
+    public void setMessages(List<Message> messages) {
+        this.messages = messages;
     }
 
     @Override
     public String toString() {
         return "Chat{" +
-                "User=" + User +
-                ", Message=" + Message +
+                "users=" + users +
+                ", messages=" + messages +
                 '}';
     }
 }
