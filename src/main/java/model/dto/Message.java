@@ -7,7 +7,7 @@ import java.util.Date;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Message {
     @XmlElement
-    private User user;
+    private String user;
 
     @XmlElement
     private String sender;
@@ -16,20 +16,18 @@ public class Message {
     @XmlSchemaType(name = "dateTime")
     private Date timestamp;
 
-    public Message() {
-    }
 
-    public Message(User user, String sender, Date timestamp) {
+    public Message(String user, String sender, Date timestamp) {
         this.user = user;
         this.sender = sender;
         this.timestamp = timestamp;
     }
 
-    public User getUser() {
+    public String getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(String user) {
         this.user = user;
     }
 
@@ -47,14 +45,5 @@ public class Message {
 
     public void setTimestamp(Date timestamp) {
         this.timestamp = timestamp;
-    }
-
-    @Override
-    public String toString() {
-        return "Message{" +
-                "user=" + user +
-                ", sender='" + sender + '\'' +
-                ", timestamp=" + timestamp +
-                '}';
     }
 }

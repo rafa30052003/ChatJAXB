@@ -3,14 +3,12 @@ package model.dto;
 import javax.xml.bind.annotation.*;
 import java.util.Date;
 
-@XmlRootElement
-@XmlAccessorType(XmlAccessType.FIELD)
+
 public class User {
-    @XmlElement
+
     private String nickname;
 
-    @XmlElement
-    @XmlSchemaType(name = "dateTime")
+
     private Date entryTime;
 
     public User() {

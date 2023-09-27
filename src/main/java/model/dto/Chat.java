@@ -8,9 +8,6 @@ import java.util.List;
 @XmlRootElement(name = "chat")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Chat {
-    @XmlElementWrapper(name = "users")
-    @XmlElement(name = "user")
-    private List<User> users;
 
     @XmlElementWrapper(name = "messages")
     @XmlElement(name = "message")
@@ -20,17 +17,11 @@ public class Chat {
     }
 
     public Chat(List<User> users, List<Message> messages) {
-        this.users = users;
+
         this.messages = messages;
     }
 
-    public List<User> getUsers() {
-        return users;
-    }
 
-    public void setUsers(List<User> users) {
-        this.users = users;
-    }
 
     public List<Message> getMessages() {
         return messages;
@@ -43,8 +34,7 @@ public class Chat {
     @Override
     public String toString() {
         return "Chat{" +
-                "users=" + users +
-                ", messages=" + messages +
+                "messages=" + messages +
                 '}';
     }
 }
