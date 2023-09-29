@@ -1,10 +1,8 @@
-import javax.persistence.EntityManager;
-import javax.persistence.TypedQuery;
-import javax.persistence.EntityTransaction;
+
 import java.util.List;
 
 public class MessageDAO {
-    private EntityManager entityManager;
+   /* private EntityManager entityManager;
 
     public MessageDAO(EntityManager entityManager) {
         this.entityManager = entityManager;
@@ -43,5 +41,5 @@ public class MessageDAO {
         transaction.begin();
         entityManager.remove(entityManager.contains(message) ? message : entityManager.merge(message));
         transaction.commit();
-    }
+    }*/
 }

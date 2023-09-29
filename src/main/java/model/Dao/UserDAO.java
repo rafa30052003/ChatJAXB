@@ -1,60 +1,40 @@
-package dao;
+package model.Dao;
 
 import model.dto.User;
-import javax.xml.bind.*;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
+import model.dto.Users;
+import conexion.XMLmanager;
+
+
 
 public class UserDAO {
-    private String filePath;
-    private List<User> users;
 
-    public UserDAO(String filePath) {
-        this.filePath = filePath;
-        this.users = new ArrayList<>();
-        loadUsersFromXML();
+    // Método para crear un nuevo usuario
+    public static void createUser(User user) {
+        Users users = Users.getInstance();
+        users.loadUsers(); // Cargar usuarios desde el archivo XML
+
+        if (!userExists(users, user.getNickname())) {
+            users.addUser(user);
+            users.saveUsers(); // Guardar la lista actualizada en el archivo XML
+        } else {
+            // Manejar el caso donde el nickname ya existe
+            System.out.println("El usuario con el nickname '" + user.getNickname() + "' ya está en la lista.");
+            // Puedes lanzar una excepción o mostrar un mensaje de error, según tus necesidades
+        }
     }
 
-    public List<User> getAllUsers() {
-        return users;
-    }
 
-    public User getUserByNickname(String nickname) {
-        for (User user : users) {
-            if (user.getNickname().equals(nickname)) {
-                return user;
+    // Método para verificar si un usuario con el mismo nickname ya existe en la lista
+    private static boolean userExists(Users users, String nickname) {
+        for (User existingUser : users.getMyusers()) {
+            if (existingUser.getNickname().equals(nickname)) {
+                return true; // El usuario con el mismo nickname ya existe en la lista
             }
         }
-        return null;
+        return false; // El usuario no existe en la lista
     }
 
-    public void addUser(User user) {
-        users.add(user);
-        saveChanges();
-    }
 
-    public void saveChanges() {
-        try {
-            JAXBContext context = JAXBContext.newInstance(User.class);
-            Marshaller marshaller = context.createMarshaller();
-            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-            marshaller.marshal(users, new File(filePath));
-        } catch (JAXBException e) {
-            e.printStackTrace();
-        }
-    }
 
-    private void loadUsersFromXML() {
-        try {
-            File file = new File(filePath);
-            if (file.exists()) {
-                JAXBContext context = JAXBContext.newInstance(User.class);
-                Unmarshaller unmarshaller = context.createUnmarshaller();
-                users = (List<User>) unmarshaller.unmarshal(file);
-            }
-        } catch (JAXBException e) {
-            e.printStackTrace();
-        }
-    }
+
 }
