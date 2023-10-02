@@ -5,36 +5,35 @@ import java.util.List;
 import javax.xml.bind.annotation.*;
 import java.util.List;
 
-@XmlRootElement(name = "chat")
-@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name = "chat") // Define el elemento raíz del XML como "chat"
+@XmlType(propOrder = { "message" }) // Orden de los elementos en el XML
 public class Chat {
 
-    @XmlElementWrapper(name = "messages")
-    @XmlElement(name = "message")
-    private List<Message> messages;
+    private Message message;
+
+    private String chatname;
+
+    public Message getMessage() {
+        return message;
+    }
 
     public Chat() {
     }
 
-    public Chat(List<User> users, List<Message> messages) {
-
-        this.messages = messages;
+    public void setMessage(Message message) {
+        this.message = message;
     }
 
-
-
-    public List<Message> getMessages() {
-        return messages;
+    public String getChatname() {
+        return chatname;
     }
 
-    public void setMessages(List<Message> messages) {
-        this.messages = messages;
+    public void setChatname(String chatname) {
+        this.chatname = chatname;
     }
 
-    @Override
-    public String toString() {
-        return "Chat{" +
-                "messages=" + messages +
-                '}';
+    public Chat(Message message, String chatname) {
+        this.message = message;
+        this.chatname = chatname;
     }
 }

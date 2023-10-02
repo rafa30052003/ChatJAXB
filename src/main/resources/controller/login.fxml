@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" type="AnchorPane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
+   <children>
+      <Text layoutX="141.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvenido a tu chat en linea.">
+         <font>
+            <Font name="Eras Bold ITC" size="25.0" />
+         </font>
+      </Text>
+      <Text layoutX="182.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" />
+      <Text layoutX="187.0" layoutY="254.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sala" />
+      <TextField fx:id="NameField" layoutX="269.0" layoutY="149.0" />
+      <ChoiceBox fx:id="ListaSalas" layoutX="265.0" layoutY="236.0" prefWidth="150.0" />
+      <Button fx:id="loginButton" layoutX="313.0" layoutY="308.0" mnemonicParsing="false" onAction="#initialize" text="LOGIN" />
+   </children>
+</fx:root>
