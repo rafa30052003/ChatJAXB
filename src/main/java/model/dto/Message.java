@@ -23,6 +23,11 @@ public class Message {
         this.timestamp = timestamp;
     }
 
+    public Message() {
+        // Constructor sin argumentos
+    }
+
+
     public String getUser() {
         return user;
     }

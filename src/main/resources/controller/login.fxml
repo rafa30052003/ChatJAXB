@@ -14,10 +14,19 @@
             <Font name="Eras Bold ITC" size="25.0" />
          </font>
       </Text>
-      <Text layoutX="182.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" />
-      <Text layoutX="187.0" layoutY="254.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sala" />
-      <TextField fx:id="NameField" layoutX="269.0" layoutY="149.0" />
+      <Text fill="RED" layoutX="180.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NAME">
+         <font>
+            <Font name="Eras Bold ITC" size="20.0" />
+         </font></Text>
+      <Text fill="RED" layoutX="179.0" layoutY="255.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SALAS">
+         <font>
+            <Font name="Eras Bold ITC" size="20.0" />
+         </font></Text>
+      <TextField fx:id="NameField" layoutX="268.0" layoutY="149.0" prefHeight="25.0" prefWidth="150.0" />
       <ChoiceBox fx:id="ListaSalas" layoutX="265.0" layoutY="236.0" prefWidth="150.0" />
-      <Button fx:id="loginButton" layoutX="313.0" layoutY="308.0" mnemonicParsing="false" onAction="#initialize" text="LOGIN" />
+      <Button fx:id="loginButton" layoutX="295.0" layoutY="309.0" mnemonicParsing="false" onAction="#initialize" text="LOGIN" textFill="RED">
+         <font>
+            <Font name="Eras Bold ITC" size="14.0" />
+         </font></Button>
    </children>
 </fx:root>

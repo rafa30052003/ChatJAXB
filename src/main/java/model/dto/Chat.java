@@ -5,8 +5,8 @@ import java.util.List;
 import javax.xml.bind.annotation.*;
 import java.util.List;
 
-@XmlRootElement(name = "chat") // Define el elemento raíz del XML como "chat"
-@XmlType(propOrder = { "message" }) // Orden de los elementos en el XML
+@XmlRootElement(name = "chat")
+@XmlType(propOrder = { "chatname", "message" })
 public class Chat {
 
     private Message message;
