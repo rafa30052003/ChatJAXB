@@ -25,6 +25,7 @@ public class Message {
 
     public Message() {
 <<<<<<< HEAD
+<<<<<<< HEAD
         // Constructor sin argumentos
     }
 
@@ -33,6 +34,10 @@ public class Message {
     }
 
 >>>>>>> 72042192358ba02c60e4a083d296e6be2afc06b6
+=======
+    }
+
+>>>>>>> 3ed6c5c769d1e770fa4e3ba7838d452b5b586bfd
     public String getUser() {
         return user;
     }

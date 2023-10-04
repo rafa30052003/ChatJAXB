@@ -40,6 +40,10 @@ public class main {
         cd.userWritesMessage(newChat3, newUser, "hola ");
         cd.userJoinsChat(newChat3,newUser1.getNickname());
         cd.userWritesMessage(newChat3, newUser1, "hola ");
+<<<<<<< HEAD
+=======
+        User newUser7 = new User("pedro", new Date());
+>>>>>>> 3ed6c5c769d1e770fa4e3ba7838d452b5b586bfd
     }
 }
 

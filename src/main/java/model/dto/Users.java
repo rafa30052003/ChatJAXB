@@ -1,6 +1,7 @@
 package model.dto;
 
 import conexion.XMLmanager;
+import services.ConfigManager;
 
 import javax.xml.bind.annotation.*;
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ public class Users {
 
     // Instancia única de Users (patrón Singleton)
     private static Users instance;
-
+String path = ConfigManager.readSharedFolderPath();
     // Ruta del archivo XML
     private static final String XML_FILE = "users.xml";
 
