@@ -3,32 +3,43 @@ package prueba;
 import model.Dao.ChatDAO;
 import model.Dao.UserDAO;
 import model.dto.Chat;
-import model.dto.Chats;
 import model.dto.Message;
 import model.dto.User;
+import model.dto.Users;
 
 import java.util.Date;
 
 public class main {
     public static void main(String[] args) {
-        /*
-        User user1 = new User("pepe", new Date());
-        User user2 = new User("juan",  new Date());
-        User user3 = new User("juan",  new Date());
-        User user4 = new User("pepe",  new Date());
-       // UserDAO.createUser(user1);
-        UserDAO.createUser(user2);
-        UserDAO.createUser(user4);
+        // Crear un nuevo usuario y agregarlo a la lista de usuarios
+      User newUser = new User("lolo", new Date());
+
+       // UserDAO.createUser(newUser);
+        // Crear un nuevo chat
+        ChatDAO chatDao = new ChatDAO();
+       // Chat newChat2 = chatDao.createChat("car");
+       // newChat2.startPeriodicUpdate();
+        //Un usuario se une al chat
+        ChatDAO cd = new ChatDAO();
+        //cd.userJoinsChat(newChat, newUser.getNickname());
+      // Message ms = new Message(newUser.getNickname(), "hola mundo", new Date());
+       //cd.userWritesMessage(newChat, newUser, ms.getSender());
 
 
-        // Imprimimos la lista de usuarios
+        //Message ms3 = new Message(newUser.getNickname(), "hola mundo", new Date());
 
 
-         */
-        User user1 = new User("pepe", new Date());
-        Message message1 = new Message(user1.getNickname(),"hola",new Date());
-        Chat chat1 = new Chat(message1,"general");
-        ChatDAO chats = new ChatDAO();
-        chats.createChat(chat1);
+       User newUser1 = new User("antonio", new Date());
+        //UserDAO.createUser(newUser1);
+      //  cd.userJoinsChat(newChat2, newUser1.getNickname());
+       // cd.userWritesMessage(newChat2, newUser1, "hola");
+      //  cd.userWritesMessage(newChat2, newUser1, "mundo");
+      //  cd.userWritesMessage(newChat2, newUser1, "cruel ");
+      Chat newChat3 = chatDao.createChat("agua");
+      cd.userJoinsChat(newChat3,newUser.getNickname());
+        cd.userWritesMessage(newChat3, newUser, "hola ");
+        cd.userJoinsChat(newChat3,newUser1.getNickname());
+        cd.userWritesMessage(newChat3, newUser1, "hola ");
     }
 }
+

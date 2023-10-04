@@ -2,51 +2,95 @@ package model.Dao;
 
 
 
-import model.dto.Chat;
-import model.dto.Chats;
 
-import javax.xml.bind.*;
-import java.io.File;
-import java.util.ArrayList;
+
+import model.dto.Chat;
+import model.dto.Message;
+import model.dto.User;
+import model.dto.Users;
+import conexion.XMLmanager;
+
+import java.util.Date;
 import java.util.List;
 
 public class ChatDAO {
-    private String filePath;
-    private Chats chats; // Cambio en el tipo de objeto
+    public Chat createChat(String chatname) {
+        Chat chat = Chat.getInstance();
 
+        // Verificar si el chat ya tiene un nombre
+        if (chat.getChatname().isEmpty()) {
+            chat.setChatname(chatname);
 
+            // Intentar cargar el chat existente
+            chat.loadChat();
 
-    public List<Chat> getAllChats() {
-        return chats.getChats(); // Obtén la lista de chats del objeto Chats
-    }
-
-
-
-
-    public static void createChat(Chat chat) {
-        Chats chats = Chats.getInstance();
-        chats.loadChats(); // Cargar chats desde el archivo XML
-
-        if (!chatsExists(chats, chat.getChatname())) {
-            chats.addChat(chat);
-            chats.saveChats(); // Guardar la lista actualizada en el archivo XML
-        } else {
-            // Manejar el caso donde el chat con el mismo nombre ya existe
-            System.out.println("El chat con el nombre '" + chat.getChatname() + "' ya existe en la lista.");
-            // Puedes lanzar una excepción o mostrar un mensaje de error, según tus necesidades
-        }
-    }
-
-
-    // Método para verificar si un usuario con el mismo nickname ya existe en la lista
-    // Método para verificar si un chat con el mismo nombre ya existe en la lista de chats
-    private static boolean chatsExists(Chats chats, String chatName) {
-        for (Chat existingChat : chats.getChats()) {
-            if (existingChat.getChatname().equals(chatName)) {
-                return true; // El chat con el mismo nombre ya existe en la lista
+            // Si no se pudo cargar, guardar el chat como nuevo
+            if (chat.getChatname().isEmpty()) {
+                chat.saveChat(); // Guardar el chat solo si no tiene un nombre
             }
         }
-        return false; // El chat no existe en la lista
+
+        return chat;
+    }
+
+
+    private User getUserFromUsersList(String username) {
+        Users users = Users.getInstance();
+        users.loadUsers();
+        for (User existingUser : users.getMyusers()) {
+            if (existingUser.getNickname().equals(username)) {
+                return existingUser;
+            }
+        }
+        return null;
+    }
+
+    public void userWritesMessage(Chat chat, User user, String messageText) {
+        Message message = new Message(user.getNickname(), messageText, new Date());
+        chat.getMessages().add(message);
+        chat.saveChat(); // Guardar el chat con el nuevo mensaje
+        
+    }
+
+
+
+
+    public void userJoinsChat(Chat chat, String username) {
+        Users users = Users.getInstance();
+        users.loadUsers();
+
+        User userToJoin = getUserFromUsersList(users, username);
+        if (userToJoin != null) {
+            chat.getUsers().add(userToJoin);
+            chat.saveChat(); // Guardar el chat con el usuario que se unió
+        } else {
+            System.out.println("El usuario no existe en la lista.");
+        }
+    }
+
+    private User getUserFromUsersList(Users users, String username) {
+        for (User existingUser : users.getMyusers()) {
+            if (existingUser.getNickname().equals(username)) {
+                return existingUser;
+            }
+        }
+        return null;
+    }
+
+
+    public void userLeavessChat(Chat chat, User user) {
+        chat.getUsers().remove(user);
+        chat.saveChat(); // Guardar el chat sin el usuario que se fue
+    }
+
+    // Verificar si un usuario está en el chat
+    public boolean isUserInChat(Chat chat, String username) {
+        for (User user : chat.getUsers()) {
+            if (user.getNickname().equals(username)) {
+                return true;
+            }
+        }
+        return false;
     }
 
 

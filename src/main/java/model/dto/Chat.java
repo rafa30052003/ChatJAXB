@@ -1,27 +1,58 @@
 package model.dto;
 
+import conexion.XMLmanager;
+import services.ChatUpdater;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Timer;
 
 import javax.xml.bind.annotation.*;
-import java.util.List;
 
-@XmlRootElement(name = "chat") // Define el elemento raíz del XML como "chat"
-@XmlType(propOrder = { "message" }) // Orden de los elementos en el XML
+@XmlRootElement(name = "chat")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Chat {
-
-    private Message message;
-
+    @XmlElement(name = "messages")
+    private List<Message> messages;
+    @XmlElement(name = "users")
+    private List<User> users;
+    @XmlElement(name = "name")
     private String chatname;
+    @XmlElement(name = "filename") // Campo para almacenar el nombre de archivo
+    private String filename;
 
-    public Message getMessage() {
-        return message;
+    private static Chat instance;
+
+    private Chat() {
+        messages = new ArrayList<>();
+        users = new ArrayList<>();
+        chatname = "";
+        filename = "";
     }
 
-    public Chat() {
+    public static synchronized Chat getInstance() {
+        if (instance == null) {
+            instance = new Chat();
+        }
+        return instance;
     }
 
-    public void setMessage(Message message) {
-        this.message = message;
+    public List<Message> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(List<Message> messages) {
+        this.messages = messages;
+    }
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
     }
 
     public String getChatname() {
@@ -32,8 +63,47 @@ public class Chat {
         this.chatname = chatname;
     }
 
-    public Chat(Message message, String chatname) {
-        this.message = message;
-        this.chatname = chatname;
+    public String getFilename() {
+        return filename;
+    }
+
+    public void setFilename(String filename) {
+        this.filename = filename;
+    }
+
+    public static void setInstance(Chat instance) {
+        Chat.instance = instance;
+    }
+
+    public void saveChat() {
+        if (filename.isEmpty()) {
+            // Si el nombre de archivo está vacío, genera un nombre de archivo único
+            filename = "xml/"+generateUniqueFileName();
+        }
+        XMLmanager.writeXML(this, filename);
+    }
+
+    public void loadChat() {
+        if (!filename.isEmpty()) {
+            Chat loadedChat = XMLmanager.readXML(this, filename);
+            if (loadedChat != null) {
+                // Cargar los datos del chat desde el archivo especificado
+                // ...
+            }
+        }
+    }
+
+    private String generateUniqueFileName() {
+        // Usar el nombre del chat como parte del nombre de archivo
+        return "chat_" + chatname + ".xml";
+    }
+
+    public void startPeriodicUpdate() {
+        Timer timer = new Timer();
+        long delay = 0; // Tiempo de espera antes de la primera ejecución
+        long period = 10000; // Intervalo de ejecución en milisegundos (10 segundos)
+
+        // Programar la ejecución periódica de la actualización del chat
+        timer.scheduleAtFixedRate(new ChatUpdater(this), delay, period);
     }
 }
