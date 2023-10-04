@@ -2,6 +2,7 @@ package model.dto;
 
 import conexion.XMLmanager;
 import services.ChatUpdater;
+import services.ConfigManager;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -38,7 +39,7 @@ public class Chat {
         }
         return instance;
     }
-
+    String path = ConfigManager.readSharedFolderPath();
     public List<Message> getMessages() {
         return messages;
     }
@@ -95,7 +96,7 @@ public class Chat {
 
     private String generateUniqueFileName() {
         // Usar el nombre del chat como parte del nombre de archivo
-        return "chat_" + chatname + ".xml";
+        return path + "chat_" + chatname + ".xml";
     }
 
     public void startPeriodicUpdate() {
