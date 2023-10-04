@@ -2,18 +2,18 @@ package model.dto;
 
 import javax.xml.bind.annotation.*;
 import java.util.Date;
+import java.util.Objects;
 
-@XmlRootElement
+@XmlRootElement(name = "message")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Message {
-    @XmlElement
+    @XmlElement(name = "user")
     private String user;
 
-    @XmlElement
+    @XmlElement(name = "text")
     private String sender;
 
-    @XmlElement
-    @XmlSchemaType(name = "dateTime")
+    @XmlElement(name = "date")
     private Date timestamp;
 
 
@@ -24,10 +24,15 @@ public class Message {
     }
 
     public Message() {
+<<<<<<< HEAD
         // Constructor sin argumentos
     }
 
 
+=======
+    }
+
+>>>>>>> 72042192358ba02c60e4a083d296e6be2afc06b6
     public String getUser() {
         return user;
     }
@@ -51,4 +56,6 @@ public class Message {
     public void setTimestamp(Date timestamp) {
         this.timestamp = timestamp;
     }
+
+
 }
