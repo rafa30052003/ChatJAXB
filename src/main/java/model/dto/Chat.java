@@ -111,9 +111,9 @@ public class Chat {
 
     private String generateUniqueFileName() {
         // Usar el nombre del chat como parte del nombre de archivo
+        
 
-        return "chat_" + chatname + ".xml";
-
+        return path + "chat_" + chatname + ".xml";
 
     }
 
