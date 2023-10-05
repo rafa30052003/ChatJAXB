@@ -2,10 +2,10 @@ package model.dto;
 
 import conexion.XMLmanager;
 import services.ChatUpdater;
-<<<<<<< HEAD
-=======
+
+
 import services.ConfigManager;
->>>>>>> 3ed6c5c769d1e770fa4e3ba7838d452b5b586bfd
+
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -16,15 +16,13 @@ import java.util.Timer;
 import javax.xml.bind.annotation.*;
 
 @XmlRootElement(name = "chat")
-<<<<<<< HEAD
+
 
 @XmlType(propOrder = { "chatname", "message" })
 
 @XmlAccessorType(XmlAccessType.FIELD)
 
-=======
-@XmlAccessorType(XmlAccessType.FIELD)
->>>>>>> 3ed6c5c769d1e770fa4e3ba7838d452b5b586bfd
+
 public class Chat {
     @XmlElement(name = "messages")
     private List<Message> messages;
@@ -49,21 +47,18 @@ public class Chat {
             instance = new Chat();
         }
         return instance;
-<<<<<<< HEAD
+
     }
 
-    public List<Message> getMessages() {
-        return messages;
-    }
 
-=======
-    }
+
+
     String path = ConfigManager.readSharedFolderPath();
     public List<Message> getMessages() {
         return messages;
     }
 
->>>>>>> 3ed6c5c769d1e770fa4e3ba7838d452b5b586bfd
+
     public void setMessages(List<Message> messages) {
         this.messages = messages;
     }
@@ -116,11 +111,10 @@ public class Chat {
 
     private String generateUniqueFileName() {
         // Usar el nombre del chat como parte del nombre de archivo
-<<<<<<< HEAD
+
         return "chat_" + chatname + ".xml";
-=======
-        return path + "chat_" + chatname + ".xml";
->>>>>>> 3ed6c5c769d1e770fa4e3ba7838d452b5b586bfd
+
+
     }
 
     public void startPeriodicUpdate() {
