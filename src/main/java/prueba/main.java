@@ -35,12 +35,14 @@ public class main {
        // cd.userWritesMessage(newChat2, newUser1, "hola");
       //  cd.userWritesMessage(newChat2, newUser1, "mundo");
       //  cd.userWritesMessage(newChat2, newUser1, "cruel ");
-      Chat newChat3 = chatDao.createChat("agua");
-      cd.userJoinsChat(newChat3,newUser.getNickname());
-        cd.userWritesMessage(newChat3, newUser, "hola ");
-        cd.userJoinsChat(newChat3,newUser1.getNickname());
-        cd.userWritesMessage(newChat3, newUser1, "hola ");
-        User newUser7 = new User("pedro", new Date());
+     // Chat newChat3 = chatDao.createChat("agua");
+     // cd.userJoinsChat(newChat3,newUser.getNickname());
+       // cd.userWritesMessage(newChat3, newUser, "hola ");
+       // cd.userJoinsChat(newChat3,newUser1.getNickname());
+       // cd.userWritesMessage(newChat3, newUser1, "hola ");
+        //User newUser7 = new User("pedro", new Date());
+        Chat newChat7 = chatDao.createChat("playa");
+
     }
 }
 

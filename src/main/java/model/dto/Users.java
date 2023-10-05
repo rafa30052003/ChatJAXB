@@ -17,7 +17,7 @@ public class Users {
     private static Users instance;
 String path = ConfigManager.readSharedFolderPath();
     // Ruta del archivo XML
-    private static final String XML_FILE = "users.xml";
+    private static final String XML_FILE = "xml/users.xml";
 
     // Constructor privado para evitar la creación de instancias desde fuera de la clase.
     private Users() {
