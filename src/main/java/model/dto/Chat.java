@@ -2,7 +2,10 @@ package model.dto;
 
 import conexion.XMLmanager;
 import services.ChatUpdater;
+
+
 import services.ConfigManager;
+
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -13,7 +16,13 @@ import java.util.Timer;
 import javax.xml.bind.annotation.*;
 
 @XmlRootElement(name = "chat")
+
+
+@XmlType(propOrder = { "chatname", "message" })
+
 @XmlAccessorType(XmlAccessType.FIELD)
+
+
 public class Chat {
     @XmlElement(name = "messages")
     private List<Message> messages;
@@ -38,11 +47,17 @@ public class Chat {
             instance = new Chat();
         }
         return instance;
+
     }
+
+
+
+
     String path = ConfigManager.readSharedFolderPath();
     public List<Message> getMessages() {
         return messages;
     }
+
 
     public void setMessages(List<Message> messages) {
         this.messages = messages;
@@ -96,7 +111,10 @@ public class Chat {
 
     private String generateUniqueFileName() {
         // Usar el nombre del chat como parte del nombre de archivo
+        
+
         return path + "chat_" + chatname + ".xml";
+
     }
 
     public void startPeriodicUpdate() {

@@ -24,7 +24,10 @@ public class Message {
     }
 
     public Message() {
+
+        // Constructor sin argumentos
     }
+
 
     public String getUser() {
         return user;
@@ -49,6 +52,8 @@ public class Message {
     public void setTimestamp(Date timestamp) {
         this.timestamp = timestamp;
     }
+    }
 
 
-}
+
+

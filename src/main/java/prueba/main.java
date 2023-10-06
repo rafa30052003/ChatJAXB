@@ -35,6 +35,7 @@ public class main {
        // cd.userWritesMessage(newChat2, newUser1, "hola");
       //  cd.userWritesMessage(newChat2, newUser1, "mundo");
       //  cd.userWritesMessage(newChat2, newUser1, "cruel ");
+<<<<<<< HEAD
      // Chat newChat3 = chatDao.createChat("agua");
      // cd.userJoinsChat(newChat3,newUser.getNickname());
        // cd.userWritesMessage(newChat3, newUser, "hola ");
@@ -43,6 +44,18 @@ public class main {
         //User newUser7 = new User("pedro", new Date());
         Chat newChat7 = chatDao.createChat("playa");
 
+=======
+      Chat newChat3 = chatDao.createChat("agua");
+      cd.userJoinsChat(newChat3,newUser.getNickname());
+        cd.userWritesMessage(newChat3, newUser, "hola ");
+        cd.userJoinsChat(newChat3,newUser1.getNickname());
+        cd.userWritesMessage(newChat3, newUser1, "hola ");
+
+        User newUser7 = new User("pedro", new Date());
+        Chat newChat4 = chatDao.createChat("fuego");
+        cd.userJoinsChat(newChat4,newUser.getNickname());
+        cd.userWritesMessage(newChat4, newUser, "hola ");
+>>>>>>> 8588008d427c7d1067aa7f186e54d40b1acc69f8
     }
 }
 

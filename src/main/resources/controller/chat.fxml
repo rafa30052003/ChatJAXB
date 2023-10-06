@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ChatController">
+   <children>
+      <MenuButton fx:id="ButtonSalas" layoutX="54.0" layoutY="163.0" mnemonicParsing="false" onAction="#initialize" text="SALAS" textFill="RED">
+        <items>
+          <MenuItem mnemonicParsing="false" text="Sala 1" />
+          <MenuItem mnemonicParsing="false" text="Sala 2" />
+        </items>
+         <font>
+            <Font name="Eras Bold ITC" size="13.0" />
+         </font>
+      </MenuButton>
+      <Text layoutX="245.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CHAT" wrappingWidth="109.9765625">
+         <font>
+            <Font name="Eras Bold ITC" size="36.0" />
+         </font>
+      </Text>
+      <Text layoutX="182.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BIENVENIDO A LA SALA" wrappingWidth="259.837890625">
+         <font>
+            <Font name="Eras Bold ITC" size="19.0" />
+         </font>
+      </Text>
+      <TextField fx:id="FieldMensaje" layoutX="225.0" layoutY="355.0" />
+      <Button fx:id="ButtonEnviar" layoutX="420.0" layoutY="355.0" mnemonicParsing="false" onAction="#enviarMensaje" text="ENVIAR" textFill="RED">
+         <font>
+            <Font name="Eras Bold ITC" size="13.0" />
+         </font></Button>
+      <ListView fx:id="ListMensajes" layoutX="200.0" layoutY="126.0" prefHeight="200.0" prefWidth="200.0" />
+      <Button layoutX="54.0" layoutY="250.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="80.0" text="SALIR" textFill="RED">
+         <font>
+            <Font name="Eras Bold ITC" size="18.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
